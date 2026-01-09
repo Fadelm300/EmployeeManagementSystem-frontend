@@ -6,13 +6,17 @@ function Login() {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    try {
-      const res = await api.post('/login', { email, password });
-      console.log(res.data); 
-    } catch (err) {
-      console.error(err.response.data);
-    }
-  };
+  try {
+    const res = await api.post('/login', { email, password });
+
+    localStorage.setItem('token', res.data.token);
+
+    window.location.href = '/employees';
+  } catch (err) {
+    alert('Invalid credentials');
+  }
+};
+
 
   return (
     <div>
