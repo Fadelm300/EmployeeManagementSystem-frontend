@@ -137,9 +137,32 @@ User is redirected to /login.
 
 - Confirmation modals are used for deleting employees and logging out.
 
+## 🖥️ Application Screenshots (Frontend)
 
+### 🔐 Login Page
+![Login Page](/public/Images/login.png)
 
+### 📊 Dashboard
+![Dashboard](/public/Images/Dashboard.png)
 
+### ➕ Add Employee Page
+![Add Employee Page](/public/Images/Add_Employee.png)
 
+### ✏️ Edit Employee Page
+![Edit Employee Page](/public/Images/Edit_Employee.png)
 
+### 🗑️ Delete Employee Action
+![Delete Employee](/public/Images/Delete_Employee.png)
+
+### 🚪 Logout Confirmation
+![Logout Confirmation](/public/Images/Confirm_Logout.png)
+
+### ❌ Email Validation Error
+![Email Error](/public/Images/input-error-email.png)
+
+### ❌ Password Validation Message
+![Password Validation](/public/Images/Password-validate-1.png)
+
+### ❌ Invalid Login Credentials
+![Invalid Credentials](/public/Images/Invalid%20email%20or%20password.png)
 
