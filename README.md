@@ -1,18 +1,145 @@
-# React + Vite
+# Employee Management Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the **React frontend** for the Employee Management System.  
+It connects to the Laravel API backend and allows you to manage employees.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Prerequisites
 
-## React Compiler
+- Node.js (v16+ recommended)
+- npm or yarn
+- Backend API running (Laravel) on `http://localhost:8000/api`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ⚡ Setup Instructions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# EmployeeManagementSystem-frontend
-# EmployeeManagementSystem-frontend
+1. **Clone the repository**
+```bash
+git clone https://github.com/Fadelm300/EmployeeManagementSystem-frontend.git
+cd frontend
+```
+2. **Install dependencies**
+
+```bash
+npm install
+```
+or
+
+```bash
+yarn install
+```
+2. **Start the development server**
+
+```bash
+npm run dev
+```
+or
+
+```bash
+yarn dev
+The app will run on http://localhost:5173 (Vite default).
+```
+
+## 🔧 API Configuration
+ 
+ - Axios is configured in src/api.js:
+
+
+
+```bash
+const api = axios.create({
+  baseURL: 'http://localhost:8000/api',
+  headers: { Accept: 'application/json' },
+});
+
+```
+- Make sure the backend Laravel API is running on port 8000.
+
+- JWT token is stored in localStorage and automatically sent with API requests.
+
+## 🔐 Authentication
+
+- Login with an existing user from backend (seeded or created manually)
+
+- Protected routes redirect unauthorized users to the login page.
+
+- After login, token is stored in localStorage and used for API requests automatically.
+
+## 🔐 Authentication Flow
+
+### 1. Login
+- User enters email and password on `/login` page.
+- Form is validated on the frontend.
+- POST request is sent to `/api/login` with:
+```json
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+```
+- Backend returns a JWT token.
+
+- Token is stored in localStorage and automatically added to the Authorization header for future requests.
+- Frontend displays validation errors under input fields and backend errors as form alerts.
+
+### 2. Protected Routes
+
+- /employees, /employees/add, /employees/edit/:id are protected.
+
+- React checks if a token exists in localStorage.
+
+- If no token is found, the user is redirected to /login.
+
+### 3. Logout
+
+Clicking Logout removes the token from localStorage.
+
+User is redirected to /login.
+
+
+
+
+
+
+## 🏠 App Navigation
+
+- /login → Login page
+
+- /employees → Employee list (protected route)
+
+- /employees/add → Add employee
+
+- /employees/edit/:id → Edit employee
+
+
+## 🧾 Available API Endpoints
+
+- All endpoints are under http://localhost:8000/api:
+
+| Endpoint         | Method | Description        | Body / Params                               |
+| ---------------- | ------ | ------------------ | ------------------------------------------- |
+| `/login`         | POST   | Authenticate user  | `{ email, password }`                       |
+| `/employees`     | GET    | Get all employees  | Header: `Authorization: Bearer <token>`     |
+| `/employees`     | POST   | Add new employee   | `{ name, email, position, salary, status }` |
+| `/employees/:id` | GET    | Get employee by ID | Header: `Authorization: Bearer <token>`     |
+| `/employees/:id` | PUT    | Update employee    | `{ name, email, position, salary, status }` |
+| `/employees/:id` | DELETE | Delete employee    | Header: `Authorization: Bearer <token>`     |
+
+⚠️ All /employees routes require authentication via JWT token
+
+## 💡 Notes
+
+- Form validation is performed both frontend and backend.
+
+- Error messages are displayed under the input fields or as alerts for destructive actions.
+
+- Confirmation modals are used for deleting employees and logging out.
+
+
+
+
+
+
+

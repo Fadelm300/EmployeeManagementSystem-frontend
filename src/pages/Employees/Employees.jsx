@@ -11,16 +11,24 @@ function Employees() {
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const navigate = useNavigate();
+const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
         const res = await api.get("/employees");
         setEmployees(res.data.data || res.data);
-      } catch {
-        alert("Failed to load employees");
+      } catch (err) {
+        if (err.response?.status === 401) {
+          localStorage.removeItem("token");
+          navigate("/login");
+          return;
+        }
+
+        setError('Failed to load employees. Please refresh the page.');
       }
     };
+
     fetchEmployees();
   }, []);
 
@@ -29,11 +37,21 @@ function Employees() {
     setShowModal(true);
   };
 
-  const confirmDelete = async () => {
+const confirmDelete = async () => {
+  if (!selectedEmployee) return;
+  try {
     await api.delete(`/employees/${selectedEmployee.id}`);
     setEmployees(employees.filter(e => e.id !== selectedEmployee.id));
     setShowModal(false);
-  };
+    setSelectedEmployee(null);
+  } catch (err) {
+          if (err.response?.status === 403) {
+              alert("You are not authorized to delete this employee");
+            } else {
+              alert("Delete failed. Please try again.");
+            }
+  }
+};
 
   return (
     <div className="employees-page">
@@ -52,6 +70,8 @@ function Employees() {
           </button>
         </div>
       </header>
+
+      {error && <div className="error-message">{error}</div>}
 
       <div className="table-card">
         <table>

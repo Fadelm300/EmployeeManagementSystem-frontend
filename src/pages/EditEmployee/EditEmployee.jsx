@@ -37,16 +37,36 @@ function EditEmployee() {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+const [errors, setErrors] = useState({});
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await api.put(`/employees/${id}`, form);
-      navigate("/employees");
-    } catch {
-      alert("Failed to update employee");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setErrors({}); 
+  try {
+    await api.put(`/employees/${id}`, form);
+    navigate("/employees");
+  } catch (err) {
+    if (!err.response) {
+      alert("Server unreachable. Please try again later.");
+      return;
     }
-  };
+
+    const { status, data } = err.response;
+
+    if (status === 422) { 
+      const fieldErrors = {};
+      if (data.errors) {
+        Object.keys(data.errors).forEach(key => {
+          fieldErrors[key] = data.errors[key][0];
+        });
+      }
+      setErrors(fieldErrors);
+      return;
+    }
+
+    alert("Failed to update employee. Please try again.");
+  }
+};
 
   return (
     <div className="edit-emp-page">
@@ -76,6 +96,8 @@ function EditEmployee() {
               required
             />
             <label>Email</label>
+              {errors.email && <span className="input-error">{errors.email}</span>}
+
           </div>
 
           <div className="edit-emp-group">

@@ -12,17 +12,41 @@ function AddEmployee() {
     salary: "",
     status: "active",
   });
+const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    api.post("/employees", form)
-      .then(() => navigate("/employees"))
-      .catch(() => alert("Failed to add employee"));
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setErrors({});
+
+  try {
+    await api.post("/employees", form);
+    navigate("/employees");
+  } catch (err) {
+    if (!err.response) {
+      alert("Server unreachable. Please try again later.");
+      return;
+    }
+
+    const { status, data } = err.response;
+
+    if (status === 422) {
+      const fieldErrors = {};
+      if (data.errors) {
+        Object.keys(data.errors).forEach(key => {
+          fieldErrors[key] = data.errors[key][0];
+        });
+      }
+      setErrors(fieldErrors);
+      return;
+    }
+
+    alert("Failed to add employee. Please try again.");
+  }
+};
 
   return (
     <div className="add-emp-page">
@@ -52,6 +76,8 @@ function AddEmployee() {
               required
             />
             <label>Email</label>
+            {errors.email && <span className="input-error-email">{errors.email}</span>}
+
           </div>
 
           <div className="add-emp-group">
