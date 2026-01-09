@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
-import Employees from "./pages/Employees";
-import AddEmployee from "./pages/AddEmployee";
-import EditEmployee from "./pages/EditEmployee";
+import Employees from "./pages/Employees/Employees";
+import AddEmployee from "./pages/AddEmployee/AddEmployee";
+import EditEmployee from "./pages/EditEmployee/EditEmployee";
 import ProtectedRoute from "./components/ProtectedRoute";
 // import DeleteEmployee from "./pages/DeleteEmployee";
 function App() {
