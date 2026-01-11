@@ -1,15 +1,45 @@
+<p align="center">
+  <a href="https://react.dev" target="_blank">
+    <img src="public/Images/react_img.png" width="200" alt="React Logo">
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-18-blue" />
+  <img src="https://img.shields.io/badge/Vite-Frontend-yellow" />
+  <img src="https://img.shields.io/badge/Axios-HTTP%20Client-purple" />
+  <img src="https://img.shields.io/badge/JWT-Authentication-green" />
+  <img src="https://img.shields.io/badge/License-MIT-lightgrey" />
+</p>
+
 # Employee Management Frontend
 
-This is the **React frontend** for the Employee Management System.  
-It connects to the Laravel API backend and allows you to manage employees.
+This project is the **frontend application** for the **Employee Management System**, built using **React.js** with **Vite** for fast development and optimized builds.
+
+The frontend communicates with a **RESTful API backend** using **Axios** and implements **JWT-based authentication** to secure protected routes such as employee management pages.
 
 ---
 
-## 🛠 Prerequisites
+## 🧑‍💻 Technologies Used
 
-- Node.js (v16+ recommended)
-- npm or yarn
-- Backend API running (Laravel) on `http://localhost:8000/api`
+- **React 18** – JavaScript library for building interactive user interfaces  
+- **Vite** – Modern frontend build tool for fast development  
+- **JavaScript (ES6+)** – Core programming language  
+- **Axios** – HTTP client for API communication  
+- **React Router DOM** – Client-side routing and protected routes  
+- **JWT Authentication** – Secure user authentication and authorization  
+- **CSS** – Styling and layout  
+
+---
+
+## 🎯 Project Purpose
+
+The goal of this frontend is to provide a **clean, user-friendly interface** for managing employees, including:
+
+- Secure login system
+- Viewing employee records
+- Adding, editing, and deleting employees
+- Handling validation and API errors clearly
 
 ---
 
@@ -40,6 +70,46 @@ or
 ```bash
 yarn dev
 The app will run on http://localhost:5173 (Vite default).
+```
+---
+
+## 🔗 Backend Repositories
+
+This frontend can work with either of the following backend implementations:
+
+### 1️⃣ Backend – CodeIgniter 4 (JWT Authentication)
+- RESTful API built with CodeIgniter 4
+- JWT-based authentication
+- CORS enabled
+
+🔗 Repository:  
+https://github.com/Fadelm300/employee-api-v2
+
+---
+
+### 2️⃣ Backend – Laravel (Alternative Implementation)
+- RESTful API built with Laravel
+- JWT authentication
+- Follows the same API structure
+
+🔗 Repository:  
+https://github.com/Fadelm300/EmployeeManagementSystem-backend
+
+---
+
+⚠️ **Important:**  
+Make sure **only one backend** is running at a time, and update the API base URL in the frontend accordingly.
+## 🔧 Backend Selection
+
+Update the API base URL in `src/api.js` depending on the backend you choose:
+
+```js
+// CodeIgniter 4
+baseURL: 'http://localhost:8080/api'
+
+// Laravel
+baseURL: 'http://localhost:8000/api'
+
 ```
 
 ## 🔧 API Configuration
