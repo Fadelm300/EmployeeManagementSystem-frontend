@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/React-18-blue" />
+  <img src="https://img.shields.io/badge/React-19-blue" />
   <img src="https://img.shields.io/badge/Vite-Frontend-yellow" />
   <img src="https://img.shields.io/badge/Axios-HTTP%20Client-purple" />
   <img src="https://img.shields.io/badge/JWT-Authentication-green" />
@@ -22,11 +22,11 @@ The frontend communicates with a **RESTful API backend** using **Axios** and imp
 
 ## 🧑‍💻 Technologies Used
 
-- **React 18** – JavaScript library for building interactive user interfaces  
+- **React 19** – JavaScript library for building interactive user interfaces  
 - **Vite** – Modern frontend build tool for fast development  
 - **JavaScript (ES6+)** – Core programming language  
 - **Axios** – HTTP client for API communication  
-- **React Router DOM** – Client-side routing and protected routes  
+- **React Router DOM** – Client-side routing and protected routes
 - **JWT Authentication** – Secure user authentication and authorization  
 - **CSS** – Styling and layout  
 
