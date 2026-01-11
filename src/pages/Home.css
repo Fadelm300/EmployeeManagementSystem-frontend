@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* ===== Page ===== */
+.home-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eaf2ff, #d6e6ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== Floating Shapes ===== */
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.6;
+  animation: float 12s infinite ease-in-out;
+}
+
+.shape-1 {
+  width: 260px;
+  height: 260px;
+  background: #1e90ff;
+  top: -80px;
+  left: -80px;
+}
+
+.shape-2 {
+  width: 220px;
+  height: 220px;
+  background: #4facfe;
+  bottom: -60px;
+  right: -60px;
+  animation-delay: 3s;
+}
+
+.shape-3 {
+  width: 180px;
+  height: 180px;
+  background: #0f4c81;
+  top: 40%;
+  right: -90px;
+  animation-delay: 6s;
+}
+
+/* ===== Card ===== */
+.home-card {
+  width: 480px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  padding: 40px;
+  border-radius: 26px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  animation: fadeUp 0.7s ease;
+  z-index: 2;
+}
+
+.home-card h1 {
+  margin: 15px 0 10px;
+  color: #0f4c81;
+}
+
+.home-subtitle {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== Logo ===== */
+.home-logo {
+  width: 120px;
+  animation: spinSlow 8s linear infinite;
+}
+
+/* ===== Badges ===== */
+.home-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.home-badges span {
+  background: linear-gradient(135deg, #1e90ff, #0f4c81);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  box-shadow: 0 6px 12px rgba(30, 144, 255, 0.35);
+}
+
+/* ===== Button ===== */
+.home-login-btn {
+  background: linear-gradient(135deg, #1e90ff, #0f4c81);
+  border: none;
+  color: white;
+  padding: 14px;
+  width: 100%;
+  border-radius: 16px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.home-login-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(30, 144, 255, 0.45);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

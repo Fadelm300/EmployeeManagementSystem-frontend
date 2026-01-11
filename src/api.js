@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-   baseURL: 'http://localhost:8000/api', // Laravel
-  // baseURL: 'http://localhost:8080/api', // CodeIgniter 4
+  //  baseURL: 'http://localhost:8000/api', // Laravel
+  baseURL: 'http://localhost:8080/api', // CodeIgniter 4
   headers: {
     Accept: 'application/json',
   },

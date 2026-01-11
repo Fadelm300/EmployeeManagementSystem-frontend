@@ -4,11 +4,15 @@ import Employees from "./pages/Employees/Employees";
 import AddEmployee from "./pages/AddEmployee/AddEmployee";
 import EditEmployee from "./pages/EditEmployee/EditEmployee";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Home from "./pages/Home.jsx";
+
 // import DeleteEmployee from "./pages/DeleteEmployee";
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Home />} />
+
         <Route path="/login" element={<Login />} />
         <Route
           path="/employees"
